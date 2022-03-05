@@ -11,7 +11,6 @@ def my_form_post():
     text = request.form['text']
     output = predict(text)
     return render_template('form.html', message=output)
-    #return output
 
 @app.route('/about')
 def about():

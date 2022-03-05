@@ -38,48 +38,33 @@
 <div class="container">
     <div class="input-group">
         <div class="input-group-prepend">
-            <span class="input-group-text">Возвращает json<br>Можно скормить пример модельке<br>"друга рвать, девушку бить, брата стрелять, маму казнить"</span>
+            <span class="input-group-text">Можно скормить пример модельке,<br>если трудно что-то придумать<br>"друга рвать, девушку бить, брата стрелять, маму казнить"</span>
         </div>
         <form method="post">
-            <textarea style="width:400px; height:86px;" name="text" class="form-control"></textarea>
-            <input name="predict" type="submit" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <div class="row">
+                <div style="width: 133%;" class="col">
+                    <textarea placeholder="{% if message %} {{message['text']}} {% endif %}" name="text"></textarea>
+                </div>
+                <div class="col">
+                    <input name="predict" type="submit" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                </div>
+            </div>
         </form>
     </div>
 </div>
 <div class="container">
     {% if message %}
-    <p>{{ message }}</p>
+    <p>{{ "Текст: " + message['text'] }}</p>
+    <p>{{ message['class'] }}</p>
+    <p>{{ message['lemmas'] }}</p>
+    <p>{{ "Cкоры:" }}</p>
+    <p>{{ message['scores_normal'] }}</p>
+    <p>{{ message['scores_insult'] }}</p>
+    <p>{{ message['scores_threat'] }}</p>
+    <p>{{ message['scores_obscenity'] }}</p>
     {% endif %}
 </div>
-<!-- Modal --><!--
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <label>Текст</label>
-                <input type="text" name="text" id="text" class="form-control" disabled/>
-                <br/>
-                <label>Класс</label>
-                <input type="text" name="class" id="class" class="form-control" disabled/>
-                <br/>
-                <label>Леммы</label>
-                <input type="text" name="lemmas" id="lemmas" class="form-control" disabled/>
-                <br/>
-                <label>Скоры</label>
-                <input type="text" name="scores" id="scores" class="form-control" disabled/>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>-->
 
 <script src="/static/js/jquery-3.6.0.slim.js"></script>
-<script src="/static/js/modal.js"></script>
 <script src="/static/js/bootstrap.bundle.min.js"></script>
 </html>

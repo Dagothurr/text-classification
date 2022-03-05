@@ -86,9 +86,13 @@ def predict(text):
 
     appDict = {
        'text': text,
-       'class': str(output_classes),
-       'lemmas': str(lemmatized_message),
-       'scores': str(result)
+       'class': "Классы: " + str(output_classes),
+       'lemmas': "Леммы: " + str(lemmatized_message),
+       'scores_normal': "normal: " + str(result[0][0]),
+       'scores_insult': "insult: " + str(result[0][1]),
+       'scores_threat': "threat: " + str(result[0][2]),
+       'scores_obscenity': "obscenity: " + str(result[0][3])
     }
-    output = json.dumps(appDict, ensure_ascii=False)
+    #output = json.dumps(appDict, ensure_ascii=False)
+    output = appDict
     return output
