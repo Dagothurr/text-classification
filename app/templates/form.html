@@ -9,62 +9,55 @@
     <link href="/static/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
-<div class="container">
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#"></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
-                    aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarCollapse">
-                <ul class="navbar-nav me-auto mb-2 mb-md-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/">Классификация</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/about">О проекте</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/model">Модель</a>
-                    </li>
-                </ul>
-            </div>
+<body>
+<nav class="navbar navbar-expand navbar-dark bg-dark mb-3">
+    <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample02"
+                aria-controls="navbarsExample02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarsExample02">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/">Классификация</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/about">О проекте</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/model">Модель</a>
+                </li>
+            </ul>
         </div>
-    </nav>
-
-</div>
+    </div>
+</nav>
 
 <div class="container">
-    <div class="input-group">
-        <div class="input-group-prepend">
-            <span class="input-group-text">Можно скормить пример модельке,<br>если трудно что-то придумать<br>"друга рвать, девушку бить, брата стрелять, маму казнить"</span>
-        </div>
+    <div style="display: inline-block; position: relative;">
+        <span style="text-align: center; display: inline-block;" class="input-group-text">Можно скормить пример модельке, если трудно что-то придумать<br>"друга рвать, девушку бить, брата стрелять, маму казнить"</span>
         <form method="post">
-            <div class="row">
-                <div style="width: 133%;" class="col">
-                    <textarea placeholder="{% if message %} {{message['text']}} {% endif %}" name="text"></textarea>
-                </div>
-                <div class="col">
-                    <input name="predict" type="submit" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                </div>
-            </div>
+            <textarea style="display: inline-block;" rows="3" class="form-control"
+                      placeholder="{% if message %} {{message['text']}} {% endif %}" name="text"></textarea>
+            <button style="position: absolute; bottom: 10px; right: 3px;" name="predict" type="submit">
+                Отправить
+            </button>
         </form>
     </div>
-</div>
-<div class="container">
-    {% if message %}
-    <p>{{ "Текст: " + message['text'] }}</p>
-    <p>{{ message['class'] }}</p>
-    <p>{{ message['lemmas'] }}</p>
-    <p>{{ "Cкоры:" }}</p>
-    <p>{{ message['scores_normal'] }}</p>
-    <p>{{ message['scores_insult'] }}</p>
-    <p>{{ message['scores_threat'] }}</p>
-    <p>{{ message['scores_obscenity'] }}</p>
-    {% endif %}
+    <div style="display: inline-block; position: relative; margin-top: auto;">
+        {% if message %}
+        <p>{{ "Текст: " + message['text'] }}</p>
+        <p>{{ message['class'] }}</p>
+        <p>{{ message['lemmas'] }}</p>
+        <p>{{ "Cкоры:" }}</p>
+        <p>{{ message['scores_normal'] }}</p>
+        <p>{{ message['scores_insult'] }}</p>
+        <p>{{ message['scores_threat'] }}</p>
+        <p>{{ message['scores_obscenity'] }}</p>
+        {% endif %}
+    </div>
 </div>
 
+</body>
 <script src="/static/js/jquery-3.6.0.slim.js"></script>
 <script src="/static/js/bootstrap.bundle.min.js"></script>
 </html>
